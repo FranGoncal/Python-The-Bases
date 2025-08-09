@@ -16,7 +16,7 @@ class LinkedList:
         self.tail.next = Node(val)
         self.tail = self.tail.next
 
-    def prepend(self, val):
+    def preappend(self, val):
         newHead = Node(val)
         newHead.next = self.head
         self.head=newHead
@@ -52,6 +52,16 @@ class LinkedList:
         if current.next!=None:
             current.next=current.next.next
 
+    def reverse(self):
+        current= self.head
+
+        self.preappend(current.value)
+
+        self.head.next = None
+
+        while current.next != None:
+            current = current.next
+            self.preappend(current.value)
 
     def toString(self):
         current = self.head
@@ -69,19 +79,18 @@ link = LinkedList(1)
 link.append(2)
 link.append(3)
 link.append(4)
-link.append(535)
-link.append(44)
-
-
-link.toString()
-link.prepend(999999)
-link.prepend(66666)
+link.append(5)
+link.append(6)
+link.preappend(99)
 link.toString()
 
 
-link.insert(1,888)
+link.insert(1,88)
 link.toString()
 
 
 link.remove(4)
+link.toString()
+
+link.reverse()
 link.toString()

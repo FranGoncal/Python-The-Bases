@@ -21,8 +21,6 @@ class DoubleLinkedList:
         self.head.previous = newHead
         self.head=newHead
 
-
-
     def insert(self,pos,val):
         current = self.head
 
