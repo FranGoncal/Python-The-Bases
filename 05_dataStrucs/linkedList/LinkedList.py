@@ -53,6 +53,9 @@ class LinkedList:
             current.next=current.next.next
 
     def reverse(self):
+        if self.head.next == None:
+            return
+        
         current= self.head
 
         self.preappend(current.value)
@@ -89,7 +92,7 @@ link.insert(1,88)
 link.toString()
 
 
-link.remove(4)
+link.remove(7)
 link.toString()
 
 link.reverse()
