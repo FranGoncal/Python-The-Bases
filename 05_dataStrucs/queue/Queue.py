@@ -41,7 +41,7 @@ class Queue:
     def isEmpty(self):
         return self.lenght == 0
     
-    def printStack(self):
+    def printQueue(self):
         s = "//Start\\\\\n"
 
         node = self.first
@@ -54,26 +54,26 @@ class Queue:
 
 
 stack = Queue()
-stack.printStack()
+stack.printQueue()
 
 
 stack.enqueue("Discord")
-stack.printStack()
+stack.printQueue()
 
 print("Peek-> "+stack.peek().value+"\n")
 
 stack.enqueue("Udemy")
-stack.printStack()
+stack.printQueue()
 
 print("Peek-> "+stack.peek().value+"\n")
 
 stack.enqueue("Google")
-stack.printStack()
+stack.printQueue()
 
 stack.dequeue()
-stack.printStack()
+stack.printQueue()
 
 stack.dequeue()
-stack.printStack()
+stack.printQueue()
 
 print("Peek-> "+stack.peek().value+"\n")
