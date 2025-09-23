@@ -6,12 +6,12 @@ client = Groq(
     api_key=os.environ.get("GROQ_API_KEY"),
 )
 
-
+messages = []
 
 
 while True:
 
-    messages = []
+    
 
     user_input = input("You: ")
     if user_input.lower() == "quit":
@@ -28,8 +28,10 @@ while True:
         stream=True,
         stop=None
     )
-
+    assistant_reply = ""
     print("Bot: ", end="")
     for chunk in completion:
-        print(chunk.choices[0].delta.content or "", end="")
+        token = chunk.choices[0].delta.content or ""
+        print(token, end="")
     print()    
+    messages.append({"role": "assistant", "content": assistant_reply})
