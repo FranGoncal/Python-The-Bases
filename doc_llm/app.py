@@ -15,7 +15,7 @@ embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 # Vetor store Chroma
 vectordb = Chroma(
     persist_directory="./chroma_db",
-    collection_name="lemmings",   # tem de ser igual ao ingest.py
+    collection_name="lemmings",
     embedding_function=embeddings
 )
 retriever = vectordb.as_retriever()
@@ -27,14 +27,14 @@ model_path = r"C:\Users\franc\AppData\Local\nomic.ai\GPT4All\qwen2.5-coder-7b-in
 llm = GPT4All(
     model=model_path,
     n_threads=4,
-    backend="gptj"  # ou "ggml" dependendo do modelo
+    backend="gptj"
 )
 
 # Cria a cadeia de QA
 qa = RetrievalQA.from_chain_type(
     llm=llm,
     retriever=retriever,
-    chain_type="stuff"  # "stuff" é o mais direto
+    chain_type="stuff"
 )
 
 # Modelo para receber queries
@@ -48,6 +48,6 @@ def perguntar(query: Query):
     resposta = qa.invoke(query.pergunta)
     texto = resposta["result"]
 
-    # json bonito, mantendo acentos e caracteres especiais
+    # json mantendo acentos e caracteres especiais
     return json.loads(json.dumps({"resposta": texto}, ensure_ascii=False))
 
